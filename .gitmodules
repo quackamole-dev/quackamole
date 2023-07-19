@@ -1,0 +1,8 @@
+[submodule "quackamole-rtc-server"]
+	path = quackamole-rtc-server
+	url = https://github.com/quackamole-dev/quackamole-rtc-server
+	branch = main
+[submodule "quackamole-rtc-gui"]
+	path = quackamole-rtc-gui
+	url = https://github.com/quackamole-dev/quackamole-rtc-gui
+	branch = main
