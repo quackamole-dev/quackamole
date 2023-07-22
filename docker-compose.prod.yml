@@ -10,7 +10,10 @@ services:
       - "443:443"
     environment:
       - NGINX_SERVER_NAME=quackamole.world
-      - NGINX_SSL_CERT=/etc/nletsencrypt/live/quackamole.world/fullchain.pem
+      - NGINX_SSL_CERT=/etc/letsencrypt/live/quackamole.world/fullchain.pem
       - NGINX_SSL_KEY=/etc/letsencrypt/live/quackamole.world/privkey.pem
+      - VITE_BACKEND_API_URL="quackamole.world/api"
+      - VITE_BACKEND_WS_URL="quackamole.world/ws"
+      - VITE_BACKEND_SECURE=true
   backend:
     build: ./quackamole-rtc-server

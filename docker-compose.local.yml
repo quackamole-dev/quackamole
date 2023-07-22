@@ -12,6 +12,9 @@ services:
       - NGINX_SERVER_NAME=localhost
       - NGINX_SSL_CERT=/etc/nginx/ssl/localhost.crt
       - NGINX_SSL_KEY=/etc/nginx/ssl/localhost.key
+      - VITE_BACKEND_API_URL="localhost:12000/api"
+      - VITE_BACKEND_WS_URL="localhost:12000/ws"
+      - VITE_BACKEND_SECURE=false
   backend:
     build: ./quackamole-rtc-server
     ports:
