@@ -1,0 +1,16 @@
+version: 'version 3'
+services:
+  nginx:
+    build: .
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+      - /etc/letsencrypt:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - NGINX_SERVER_NAME=quackamole.world
+      - NGINX_SSL_CERT=/etc/nletsencrypt/live/quackamole.world/fullchain.pem
+      - NGINX_SSL_KEY=/etc/letsencrypt/live/quackamole.world/privkey.pem
+  backend:
+    build: ./quackamole-rtc-server

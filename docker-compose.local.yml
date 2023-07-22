@@ -1,0 +1,18 @@
+version: 'version 3'
+services:
+  nginx:
+    build: .
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+    ports:
+      - "8080:80"
+      - "80:80"
+      - "443:443"
+    environment:
+      - NGINX_SERVER_NAME=localhost
+      - NGINX_SSL_CERT=/etc/nginx/ssl/localhost.crt
+      - NGINX_SSL_KEY=/etc/nginx/ssl/localhost.key
+  backend:
+    build: ./quackamole-rtc-server
+    ports:
+      - 12000:12000
