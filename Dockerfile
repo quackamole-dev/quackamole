@@ -3,7 +3,7 @@ FROM node:20.4.0-slim as build
 WORKDIR /usr/src/app
 COPY ./quackamole-rtc-gui/package*.json ./
 COPY ./quackamole-rtc-gui ./
-RUN npm ci && npm run build
+RUN npm install && npm run build
 
 # STAGE 2: Setup nginx and copy frontend build files
 FROM nginx:1.25.1-alpine
