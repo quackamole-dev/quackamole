@@ -2,13 +2,16 @@ version: 'version 3'
 services:
   nginx:
     build: .
+    restart: always
     volumes:
       - ./nginx/templates:/etc/nginx/templates
+      - ./quackamole-rtc-server/test:/etc/nginx/ssl
     ports:
       - "8080:80"
       - "80:80"
       - "443:443"
     environment:
+      - NGINX_ENVSUBST_TEMPLATE_SUFFIX=.conf # to retain syntax highlighting
       - NGINX_SERVER_NAME=localhost
       - NGINX_SSL_CERT=/etc/nginx/ssl/localhost.crt
       - NGINX_SSL_KEY=/etc/nginx/ssl/localhost.key

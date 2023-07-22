@@ -13,4 +13,5 @@ RUN apk add --no-cache openssl && \
     rm -rf /usr/share/nginx/html/*
 # COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+# Regarding usage of ENTRYPOINT with nginx dockerhub image: https://github.com/nginxinc/docker-nginx/issues/422
+CMD ["nginx", "-g", "daemon off;"]
