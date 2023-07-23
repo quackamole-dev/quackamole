@@ -21,7 +21,7 @@ RUN npm install && npm run build
 
 # STAGE 2: Setup nginx and copy frontend build files
 FROM nginx:1.25.1-alpine
-RUN apk add --no-cache openssl && \
+RUN apk add --no-cache openssl nano && \
     openssl dhparam -out /etc/nginx/dhparam.pem 1024 && \
     apk del openssl && \
     rm -rf /usr/share/nginx/html/*

@@ -4,9 +4,9 @@ services:
     build:
       context: .
       args:
-        - VITE_BACKEND_API_URL=localhost:12000/api
-        - VITE_BACKEND_WS_URL=localhost:12000/ws
-        - VITE_BACKEND_SECURE=false
+        - VITE_BACKEND_API_URL=localhost/api
+        - VITE_BACKEND_WS_URL=localhost/ws
+        - VITE_BACKEND_SECURE=true
     restart: always
     volumes:
       - ./nginx/templates:/etc/nginx/templates
@@ -22,5 +22,5 @@ services:
       - NGINX_SSL_KEY=/etc/nginx/ssl/localhost.key
   backend:
     build: ./quackamole-rtc-server
-    ports:
-      - 12000:12000
+    # ports:
+    #   - 12000:12000 # <--------- by not exposing port we can only access it via nginx proxy. Uncomment for direct access
