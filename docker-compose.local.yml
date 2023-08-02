@@ -11,6 +11,7 @@ services:
     volumes:
       - ./nginx/templates:/etc/nginx/templates
       - ./quackamole-rtc-server/test:/etc/nginx/ssl
+      - ./quackamole-rtc-gui/dist:/usr/share/nginx/html
     ports:
       - "8080:80"
       - "80:80"
